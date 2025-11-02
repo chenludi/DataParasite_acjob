@@ -1,6 +1,6 @@
 # DataParasite
 
-> *The name is inspired by the ethos of Park & Greene's "[A parasite's perspective on data sharing](https://academic.oup.com/gigascience/article/7/11/giy129/5140693)" [1]—embracing the role of data reusers in the scientific ecosystem.*
+> *The name is inspired by the ethos of Park & Greene's "[A parasite's perspective on data sharing](https://academic.oup.com/gigascience/article/7/11/giy129/5140693)" [1]*
 
 DataParasite is a simple yet versatile context engineered for scalable online data curation with LLMs. The project is optimized for coding agents (for example, Cursor-agent CLI automations) that orchestrate data curation runs end-to-end (with flexible level of human-in-the-loop), while still supporting a fully manual flow through the standalone Python script or by using the ChatGPT web interface to help you draft task configs. Any reasonably capable coding agent can operate the workflow: give it a short task description, point it to `CONSTITUTION.md` for orientation, and it will draft configs, gather entities from a CSV you provide, or even curate the list online itself when internet access is available before running the pipeline.
 
