@@ -1,8 +1,8 @@
-# Data Parasite
+# DataParasite
 
 > *The name is inspired by the ethos of Park & Greene's "[A parasite's perspective on data sharing](https://academic.oup.com/gigascience/article/7/11/giy129/5140693)" [1]—embracing the role of data reusers in the scientific ecosystem.*
 
-Data Parasite is a simple yet versatile context engineered for scalable online data curation with LLMs. The project is optimized for coding agents (for example, Cursor-agent CLI automations) that orchestrate data curation runs end-to-end (with flexible level of human-in-the-loop), while still supporting a fully manual flow through the standalone Python script or by using the ChatGPT web interface to help you draft task configs. Any reasonably capable coding agent can operate the workflow: give it a short task description, point it to `CONSTITUTION.md` for orientation, and it will draft configs, gather entities from a CSV you provide, or even curate the list online itself when internet access is available before running the pipeline.
+DataParasite is a simple yet versatile context engineered for scalable online data curation with LLMs. The project is optimized for coding agents (for example, Cursor-agent CLI automations) that orchestrate data curation runs end-to-end (with flexible level of human-in-the-loop), while still supporting a fully manual flow through the standalone Python script or by using the ChatGPT web interface to help you draft task configs. Any reasonably capable coding agent can operate the workflow: give it a short task description, point it to `CONSTITUTION.md` for orientation, and it will draft configs, gather entities from a CSV you provide, or even curate the list online itself when internet access is available before running the pipeline.
 
 ## Key Advantages
 
@@ -67,14 +67,15 @@ We encourage improvements to `CONSTITUTION.md`! This file defines the core guide
 ## Agent Demos
 
 ### Demo 1: Agent run with a user-supplied entity list
-This demo curates data about scientists in the `ValarMorghulis` task—a playful reference to a rather morbid but useful "treatment variable" in science-of-science research: the death of superstar scientists. Studies like Azoulay et al.'s "[Does science advance one funeral at a time?](https://www.aeaweb.org/articles?id=10.1257/aer.20161574)" [4] and Balsmeier et al.'s work on coinventor deaths [5] have shown how such events reveal knowledge spillovers and research dynamics.
+Nothing lasts forever. Even the longest, the most glittering reign must come to an end some day. 
+This demo curates data about scientists in the `ValarMorghulis` task—a playful reference to a rather morbid but useful "treatment variable" in "science-of-science" research: the death of superstar scientists. Studies like Azoulay et al.'s "[Does science advance one funeral at a time?](https://www.aeaweb.org/articles?id=10.1257/aer.20161574)" [4] and Balsmeier et al.'s work on coinventor deaths [5] have shown how such events reveal knowledge spillovers and research dynamics.
 
-<video src="https://github.com/user-attachments/assets/64d3dcf3-897e-4bc2-b49e-faabad784b48" width="800"></video>
+<video src="https://github.com/user-attachments/assets/799d09be-9a46-4d05-ac1f-84a4a6d497f8" width="800"></video>
 
 ### Demo 2: Agent run that curates the entity list online before extraction
 The `MeansOfAscent` task takes its name from the second volume of Robert Caro's masterful biography of Lyndon Johnson [6,7] (yea,I am a bit Caro-pilled lately). This demo showcases the full agent workflow: curating the entity list online, then executing the extraction pipeline—no input CSV required.
 
-<video src="https://github.com/user-attachments/assets/e2e88c32-c2ee-448f-9166-82c627db4b39" width="800"></video>
+<video src="https://github.com/user-attachments/assets/4a96bf35-6390-4a08-b045-32e8ca441d3a" width="800"></video>
 
 ---
 
