@@ -64,7 +64,7 @@ Contributions are welcome—create a new subfolder under `tasks/`, add your conf
 ## Amend the Constitution
 We encourage improvements to `CONSTITUTION.md`! This file defines the core guidelines and workflow rules for agents operating in this repository. If you discover better patterns, clearer instructions, or missing safeguards, propose amendments by submitting a pull request with your suggested changes. Thoughtful updates to the constitution benefit all users and agent interactions with the framework.
 
-**Note on agent instruction following**: If you find that coding agents (like Codex or many others) don't consistently follow the instructions in `CONSTITUTION.md`, you might want to rename it to `AGENTS.md` (for Codex) or `CLAUDE.md` (for Claude-based agents), as some agents automatically prioritize files with these names. However, in practice, simply referring to the file at the beginning of your task prompt usually works fine, as the tasks are typically short and straightforward enough for coding agents to follow.
+**Note on agent instruction following**: I use `CONSTITUTION.md` to stay coding agent agnostic—different agents expect different base instruction file names (e.g., `AGENTS.md` for Codex, `CLAUDE.md` for Claude). If an agent doesn't follow `CONSTITUTION.md`, try renaming it accordingly, but usually just referencing the file in your prompt works fine.
 
 ## Agent Demos
 
