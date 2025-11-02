@@ -81,6 +81,10 @@ The `MeansOfAscent` task takes its name from the second volume of Robert Caro's 
 
 ---
 
+## Known Limitations
+
+**URL Accuracy**: Manual review shows that while the core entity data is generally accurate, the supporting URLs provided in results may occasionally link to a search-start page or a broader section, rather than directly to the relevant reference or passage. Sometimes, links may be broken. Finding a way to instruct the model for precise citations remains a headache as of now. The extracted data itself is typically reliable, but you may need to manually locate the specific source context for verification.
+
 ## References
 
 [1] Park, Y., & Greene, C. S. (2018). A parasite's perspective on data sharing. *GigaScience*, 7(11), giy129. https://doi.org/10.1093/gigascience/giy129
