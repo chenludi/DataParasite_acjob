@@ -1,0 +1,67 @@
+# ============================================================================
+# Task Configuration: Scholar Academic History Research
+# ============================================================================
+# This configuration file defines the task-specific parameters for the
+# Data Parasite framework. Use this as a template for creating new tasks.
+
+# --- Output Schema ---
+# Define the fields you want to extract and their types.
+# Supported types: str, Optional[str], int, Optional[int]
+output_schema:
+  degree_institution:
+    type: Optional[str]
+    description: "Institution where PhD was obtained"
+  degree_year:
+    type: Optional[str]
+    description: "Year PhD was obtained"
+  first_hire_institution:
+    type: Optional[str]
+    description: "First tenure-track institution"
+
+# --- CSV Column Mapping ---
+# Map CSV column names to variable names used in prompts
+# Format: csv_column_name: variable_name_for_prompt
+csv_column_mapping:
+  name: name
+  institution: institution
+
+# --- Required Columns ---
+# CSV columns that must have non-empty values (will error if empty)
+# Use actual CSV column names here, not the mapped variable names
+required_columns:
+  - name
+  - institution
+
+# --- Prompts ---
+# System prompt sets the overall behavior
+prompt_system: >
+  You are an expert in using online information to answer questions.
+  Always follow user's request answer schema and provide supporting URLs as needed.
+
+# User prompt with {variable} placeholders matching csv_column_mapping values
+prompt_user: |
+  You are a precise research assistant.
+  Task: Given a scholar's name and current institution, find:
+  1. Where and when they received their Ph.D. degree
+  2. What was their first tenure-track position
+
+  Return STRICT JSON (no extra text) with fields:
+  {{
+    "degree_institution": "<exact institution name or 'not_found'><url>https://example.com</url>",
+    "degree_year": "<4-digit year or 'not_found'><url>https://example.com</url>",
+    "first_hire_institution": "<exact institution name or 'not_found'><url>https://example.com</url>"
+  }}
+
+  IMPORTANT RULES:
+  - If you find the information: return "exact_name<url>https://source-url.com</url>"
+  - If you cannot find the information: return "not_found" (NO URL for not_found)
+  - Always include supporting URLs when you have found information
+  - Never include URLs with "not_found"
+
+  Scholar: "{name}" from "{institution}"
+  Think, search the web if needed, and output ONLY the JSON object.
+
+# --- Model Configuration ---
+# Default model to use (can be overridden via CLI --model flag)
+default_model: gpt-5-mini
+

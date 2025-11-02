@@ -1,0 +1,67 @@
+# ============================================================================
+# Task Configuration: Nobel Laureate Life Status Research
+# ============================================================================
+# This configuration file defines the task-specific parameters for determining
+# whether Nobel laureates are still alive and, if not, when they passed away.
+
+# --- Output Schema ---
+# Define the fields you want to extract and their types.
+# Supported types: str, Optional[str], int, Optional[int], bool, Optional[bool]
+output_schema:
+  is_alive:
+    type: bool
+    description: "Whether the Nobel laureate is still alive (true) or deceased (false)"
+  date_of_death:
+    type: Optional[str]
+    description: "Date of death in YYYY-MM-DD format, or null if still alive"
+
+# --- CSV Column Mapping ---
+# Map CSV column names to variable names used in prompts
+# Format: csv_column_name: variable_name_for_prompt
+csv_column_mapping:
+  fullName: name
+  category: category
+  dateAwarded: date_awarded
+
+# --- Required Columns ---
+# CSV columns that must have non-empty values (will error if empty)
+# Use actual CSV column names here, not the mapped variable names
+required_columns:
+  - fullName
+
+# --- Prompts ---
+# System prompt sets the overall behavior
+prompt_system: >
+  You are an expert in using online information to answer questions about individuals.
+  Always follow user's request answer schema and provide supporting URLs as needed.
+
+# User prompt with {variable} placeholders matching csv_column_mapping values
+prompt_user: |
+  You are a precise research assistant.
+  Task: Given a Nobel laureate's name, determine:
+  1. Whether they are still alive (true) or deceased (false)
+  2. If deceased, the exact date of death in YYYY-MM-DD format
+  
+  Nobel Laureate: "{name}"
+  Category: {category}
+  Award Date: {date_awarded}
+
+  Return STRICT JSON (no extra text) with fields:
+  {{
+    "is_alive": <true or false>,
+    "date_of_death": "<YYYY-MM-DD or null><url>https://example.com</url>"
+  }}
+
+  IMPORTANT RULES:
+  - If the person is alive: set "is_alive" to true and "date_of_death" to null (NO URL for null)
+  - If the person is deceased: set "is_alive" to false and "date_of_death" to "YYYY-MM-DD<url>https://source-url.com</url>"
+  - Always include supporting URLs when you have found information
+  - Never include URLs with null values
+  - Use reliable sources such as official obituaries, Wikipedia, or reputable news sources
+  - If you cannot find definitive information, mark as deceased only if you have clear evidence; otherwise return the most reliable information available
+
+  Think, search the web if needed, and output ONLY the JSON object.
+
+# --- Model Configuration ---
+# Default model to use (can be overridden via CLI --model flag)
+default_model: gpt-5-mini

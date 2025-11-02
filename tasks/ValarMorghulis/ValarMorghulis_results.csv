@@ -1,0 +1,11 @@
+input_name,input_category,input_date_awarded,input_tokens,is_alive,date_of_death
+Simon van der Meer,Physics,1984-10-17,8681,false,2011-03-04<url>https://www.nobelprize.org/prizes/physics/1984/meer/facts/</url>
+John R. Hicks,Economic Sciences,1972-10-25,8968,false,1989-05-20<url>https://www.nobelprize.org/prizes/economic-sciences/1972/hicks/biographical/</url>
+Joseph E. Stiglitz,Economic Sciences,2001-10-10,8842,true,not_found
+Adolfo Pérez Esquivel,Peace,1980-10-27,8690,true,not_found
+Thomas R. Cech,Chemistry,1989-10-12,8940,true,not_found
+Eisaku Sato,Peace,1974-10-09,9147,false,1975-06-03<url>https://www.nobelprize.org/prizes/peace/1974/sato/facts/</url>
+Elinor Ostrom,Economic Sciences,2009-10-12,8942,false,2012-06-12<url>https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/biographical/</url>
+Steven Chu,Physics,1997-10-15,13332,true,not_found
+Albert John Luthuli,Peace,1961-10-23,8891,false,1967-07-21<url>https://www.britannica.com/biography/Albert-Luthuli</url>
+Richard R. Schrock,Chemistry,2005-10-05,13310,true,not_found

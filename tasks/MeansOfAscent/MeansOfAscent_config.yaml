@@ -1,0 +1,71 @@
+# ============================================================================
+# Task Configuration: U.S. Senate Entry Data Collection
+# ============================================================================
+# This configuration file defines the task-specific parameters for the
+# Data Parasite framework. Use this as a template for creating new tasks.
+
+# --- Output Schema ---
+# Define the fields you want to extract and their types.
+# Supported types: str, Optional[str], int, Optional[int]
+output_schema:
+  first_senate_entry_year:
+    type: Optional[str]
+    description: "Year when senator first entered the Senate (appointed or elected)"
+  entry_method:
+    type: Optional[str]
+    description: "Method of entry: 'elected' or 'appointed'"
+  first_election_opponent:
+    type: Optional[str]
+    description: "If elected, the final opponent they defeated in the first successful election"
+
+# --- CSV Column Mapping ---
+# Map CSV column names to variable names used in prompts
+# Format: csv_column_name: variable_name_for_prompt
+csv_column_mapping:
+  name: name
+  state: state
+
+# --- Required Columns ---
+# CSV columns that must have non-empty values (will error if empty)
+# Use actual CSV column names here, not the mapped variable names
+required_columns:
+  - name
+  - state
+
+# --- Prompts ---
+# System prompt sets the overall behavior
+prompt_system: >
+  You are an expert in using online information to answer questions about U.S. Senate history and elections.
+  Always follow user's request answer schema and provide supporting URLs as needed.
+
+# User prompt with {variable} placeholders matching csv_column_mapping values
+prompt_user: |
+  You are a precise research assistant specializing in U.S. Senate history.
+  Task: Given a current U.S. senator's name and state, find:
+  1. The year they first entered the Senate (whether appointed or elected)
+  2. Whether they were appointed or elected
+  3. If they were elected (not appointed), the final opponent they defeated in their first successful election
+
+  Return STRICT JSON (no extra text) with fields:
+  {{
+    "first_senate_entry_year": "<4-digit year or 'not_found'><url>https://example.com</url>",
+    "entry_method": "<'elected' or 'appointed' or 'not_found'><url>https://example.com</url>",
+    "first_election_opponent": "<opponent name or 'not_found' or 'appointed'><url>https://example.com</url>"
+  }}
+
+  IMPORTANT RULES:
+  - If you find the information: return "exact_value<url>https://source-url.com</url>"
+  - If you cannot find the information: return "not_found" (NO URL for not_found)
+  - For "first_election_opponent": 
+    * If the senator was elected: return the name of the final opponent they defeated in their first successful election
+    * If the senator was appointed: return "appointed" (NO URL needed)
+    * If you cannot determine: return "not_found" (NO URL needed)
+  - Always include supporting URLs when you have found information
+  - Never include URLs with "not_found" or "appointed"
+
+  Senator: "{name}" from "{state}"
+  Think, search the web if needed, and output ONLY the JSON object.
+
+# --- Model Configuration ---
+# Default model to use (can be overridden via CLI --model flag)
+default_model: gpt-5-mini
