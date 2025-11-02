@@ -28,7 +28,7 @@ python src/data_parasite.py \
 ### For Simpler, Faster Tasks
 - **Consider `gpt-4o-mini`** for straightforward curation tasks—it's fast, relatively cheap, and often sufficient for simpler extraction needs
 
-### Setting Workers for GPT-5
+### Setting Workers for GPT-5 Series Models
 ```bash
 python src/data_parasite.py \
   --config_file tasks/YourTask/config.yaml \
