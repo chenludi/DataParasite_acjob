@@ -67,7 +67,7 @@ We encourage improvements to `CONSTITUTION.md`! This file defines the core guide
 ## Agent Demos
 
 ### Demo 1: Agent run with a user-supplied entity list
-Nothing lasts forever. Even the longest, the most glittering reign must come to an end some day. 
+Nothing lasts forever. Even the longest, the most glittering reign must come to an end some day.  
 This demo curates data about scientists in the `ValarMorghulis` task—a playful reference to a rather morbid but useful "treatment variable" in "science-of-science" research: the death of superstar scientists. Studies like Azoulay et al.'s "[Does science advance one funeral at a time?](https://www.aeaweb.org/articles?id=10.1257/aer.20161574)" [4] and Balsmeier et al.'s work on coinventor deaths [5] have shown how such events reveal knowledge spillovers and research dynamics.
 
 <video src="https://github.com/user-attachments/assets/799d09be-9a46-4d05-ac1f-84a4a6d497f8" width="800"></video>
