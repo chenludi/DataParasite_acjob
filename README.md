@@ -10,7 +10,7 @@ DataParasite is a simple yet versatile context engineered for scalable online da
 Traditional deep research tools excel at individual deep-dive inquiries but struggle with structured data curation tasks that require gathering information for long lists of entities. Data Parasite exploits a key insight: **entity curation is embarrassingly parallel**. While curating 100 scholars' academic histories is a long-horizon task as a whole, each scholar's record is an independent subtask. By launching parallel agentic searches for each entity, we transform an intractable long-horizon problem into a scalable parallel workflow.
 
 ### Elegant Simplicity Over Multi-Agent Complexity
-Implementing parallel entity curation typically demands sophisticated multi-agent orchestration systems with planners, coordinators, and specialized sub-agents [2]—solutions that are often over-engineered and brittle. Data Parasite takes a different approach: **leverage off-the-shelf coding agents as orchestrators** instead of building complex agent frameworks from scratch. The entire system reduces to:
+Implementing parallel curation of entity information typically demands sophisticated multi-agent orchestration systems with planners, coordinators, and specialized sub-agents [2]—solutions that are often over-engineered and brittle. Data Parasite takes a different approach: **leverage off-the-shelf coding agents as orchestrators** instead of building complex agent frameworks from scratch. The entire system reduces to:
 - A single Python script that performs parallel agentic search over a CSV input
 - A well-defined YAML config file that specifies task structure, prompts, and schema
 - Powerful coding agents (or even ChatGPT's web interface) to generate custom configs from natural language descriptions
@@ -18,7 +18,7 @@ Implementing parallel entity curation typically demands sophisticated multi-agen
 This architecture is both simpler and more robust than bespoke multi-agent systems, while remaining versatile enough to adapt to diverse curation tasks. An added benefit: **the config file itself becomes clear documentation** of your task intent, capturing prompts, schema, and logic in a human-readable format that serves as both a reproducible record and a foundation for iterative refinement.
 
 ### Zero-Input Bootstrap with Web-Enabled Agents
-Modern coding agents increasingly incorporate web search capabilities, unlocking another dimension of automation: **zero-input entity list generation**. When entity lists are publicly available online (e.g., "Fortune 500 CEOs," "Nobel Prize winners"), you can start without any input file—simply ask the coding agent to curate the entity list first, then proceed with the extraction pipeline. This capability transforms Data Parasite from a data processing tool into an end-to-end research automation framework.
+Modern coding agents increasingly incorporate web search capabilities, unlocking another dimension of automation: **zero-input entity list generation**. When entity lists are publicly available online (e.g., "S&P 500 CEOs," "Current U.S. Senators"), you can start without any input file—simply ask the coding agent to curate the entity list first, then proceed with the extraction pipeline. This capability transforms Data Parasite from a data processing tool into an end-to-end research automation framework.
 
 ## Workflow Overview
 - Primary mode is agent-driven: prompt a coding agent with your task goal, remind it to read `CONSTITUTION.md`, and it can deduce the repo structure, author the config automatically, request or accept your CSV, or curate the entity list online (with internet access) before executing `src/data_parasite.py`.
@@ -44,7 +44,7 @@ Modern coding agents increasingly incorporate web search capabilities, unlocking
 ## Standalone Script
 `src/data_parasite.py` can be invoked directly without an agent:
 - `--config_file`: task YAML defining schema, prompts, required columns, and default model.
-- `--csv_file`: input entities CSV; must expose the columns referenced by the config.
+- `--csv_file`: input entities CSV; must expose the columns referenced by the config. The CSV doesn't have to include only the entities to search for—you can include additional metadata columns that might be helpful for the search task. Coding agents will often be able to intelligently incorporate those columns if needed.
 - `--output_file`: destination JSONL; a cleaned CSV with inputs and outputs is created automatically.
 - `--model`: optional override for the model named in the config.
 - `--sample`: randomly process only N rows.
