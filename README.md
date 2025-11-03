@@ -2,20 +2,20 @@
 
 > *The name is inspired by the ethos of Park & Greene's "[A parasite's perspective on data sharing](https://academic.oup.com/gigascience/article/7/11/giy129/5140693)" [1]*
 
-DataParasite is a simple yet versatile context engineered for scalable online data curation with LLMs. The project is optimized for coding agents (for example, Cursor-agent CLI automations) that orchestrate data curation runs end-to-end (with flexible level of human-in-the-loop), while still supporting a fully manual flow through the standalone Python script or by using the ChatGPT web interface to help you draft task configs. Any reasonably capable coding agent can operate the workflow: give it a short task description, point it to `CONSTITUTION.md` for orientation, and it will draft configs, gather entities from a CSV you provide, or even curate the list online itself when internet access is available before running the pipeline.
+DataParasite is a simple yet versatile context engineered for scalable online data collection with LLMs. The project is optimized for coding agents (for example, Cursor-agent CLI automations) that orchestrate data collection runs end-to-end (with flexible level of human-in-the-loop), while still supporting a fully manual flow through the standalone Python script or by using the ChatGPT web interface to help you draft task configs. Any reasonably capable coding agent can operate the workflow: give it a short task description, point it to `CONSTITUTION.md` for orientation, and it will draft configs, gather entities from a CSV you provide, or even curate the list online itself when internet access is available before running the pipeline.
 
 ## Key Advantages
 
-### Solving the Long-Horizon Entity Curation Problem
-Traditional deep research tools excel at individual deep-dive inquiries but struggle with structured data curation tasks that require gathering information for long lists of entities. Data Parasite exploits a key insight: **entity curation is embarrassingly parallel**. While curating 100 scholars' academic histories is a long-horizon task as a whole, each scholar's record is an independent subtask. By launching parallel agentic searches for each entity, we transform an intractable long-horizon problem into a scalable parallel workflow.
+### Solving the Long-Horizon Entity Collection Problem
+Traditional deep research tools excel at individual deep-dive inquiries but struggle with structured data collection tasks that require gathering information for long lists of entities. Data Parasite exploits a key insight: **entity collection is embarrassingly parallel**. While curating 100 scholars' academic histories is a long-horizon task as a whole, each scholar's record is an independent subtask. By launching parallel agentic searches for each entity, we transform an intractable long-horizon problem into a scalable parallel workflow.
 
 ### Elegant Simplicity Over Multi-Agent Complexity
-Implementing parallel curation of entity information typically demands sophisticated multi-agent orchestration systems with planners, coordinators, and specialized sub-agents [2]—solutions that are often over-engineered and brittle. Data Parasite takes a different approach: **leverage off-the-shelf coding agents as orchestrators** instead of building complex agent frameworks from scratch. The entire system reduces to:
+Implementing parallel collection of entity information typically demands sophisticated multi-agent orchestration systems with planners, coordinators, and specialized sub-agents [2]—solutions that are often over-engineered and brittle. Data Parasite takes a different approach: **leverage off-the-shelf coding agents as orchestrators** instead of building complex agent frameworks from scratch. The entire system reduces to:
 - A single Python script that performs parallel agentic web search based on a CSV input
 - A well-defined YAML config file that specifies task structure, prompts, and schema
 - Powerful coding agents (or even ChatGPT's web interface) to generate custom configs from natural language descriptions
 
-This architecture is both simpler and more robust than bespoke multi-agent systems, while remaining versatile enough to adapt to diverse curation tasks. An added benefit: **the config file itself becomes clear documentation** of your task intent, capturing prompts, schema, and logic in a human-readable format that serves as both a reproducible record and a foundation for iterative refinement.
+This architecture is both simpler and more robust than bespoke multi-agent systems, while remaining versatile enough to adapt to diverse collection tasks. An added benefit: **the config file itself becomes clear documentation** of your task intent, capturing prompts, schema, and logic in a human-readable format that serves as both a reproducible record and a foundation for iterative refinement.
 
 ### Zero-Input Bootstrap with Web-Enabled Agents
 Modern coding agents increasingly incorporate web search capabilities, unlocking another dimension of automation: **zero-input entity list generation**. When entity lists are publicly available online (e.g., "S&P 500 CEOs," "Current U.S. Senators"), you can start without any input file—simply ask the coding agent to curate the entity list first, then proceed with the extraction pipeline. This capability transforms Data Parasite from a data processing tool into an end-to-end research automation framework.
@@ -59,7 +59,7 @@ Each JSONL record captures the normalized outputs, original inputs, timing, toke
 Seed and user-created task folders live under `tasks/`. Copy an existing folder (for example, `tasks/Path2Power/`), tweak the YAML schema and prompts, drop in your CSV, and rerun the CLI or agent with those paths.
 
 ## Contribute Configs
-Contributions are welcome—create a new subfolder under `tasks/`, add your config YAML, supporting CSVs, and documentation describing the prompts or special instructions. Focus on novel curation problems or data domains so others can reproduce and extend the workflow.
+Contributions are welcome—create a new subfolder under `tasks/`, add your config YAML, supporting CSVs, and documentation describing the prompts or special instructions. Focus on novel collection problems or data domains so others can reproduce and extend the workflow.
 
 ## Amend the Constitution
 We encourage improvements to `CONSTITUTION.md`! This file defines the core guidelines and workflow rules for agents operating in this repository. If you discover better patterns, clearer instructions, or missing safeguards, propose amendments by submitting a pull request with your suggested changes. Thoughtful updates to the constitution benefit all users and agent interactions with the framework.
